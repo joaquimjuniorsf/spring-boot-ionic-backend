@@ -22,11 +22,6 @@ public class CategoriaResource {
 		
 		List<Categoria>	lista = Arrays.asList(cat1,cat2,cat3);
 		
-//		List<Categoria>	lista = new ArrayList<>();
-//		lista.add(cat1);
-//		lista.add(cat2);
-//		lista.add(cat3);
-		
 		return lista;
 	}
 
