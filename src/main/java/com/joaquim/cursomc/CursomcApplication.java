@@ -16,7 +16,7 @@ import com.joaquim.cursomc.domain.Produto;
 import com.joaquim.cursomc.domain.enums.ClienteTipo;
 import com.joaquim.cursomc.repositories.CategoriaRepository;
 import com.joaquim.cursomc.repositories.CidadeRepository;
-import com.joaquim.cursomc.repositories.ClienteRepositoty;
+import com.joaquim.cursomc.repositories.ClienteRepository;
 import com.joaquim.cursomc.repositories.EnderecoRepositoty;
 import com.joaquim.cursomc.repositories.EstadoRepository;
 import com.joaquim.cursomc.repositories.ProdutoRepositoty;
@@ -40,7 +40,7 @@ public class CursomcApplication implements CommandLineRunner{
 	private EnderecoRepositoty enderecoRepositoty;
 	
 	@Autowired
-	private ClienteRepositoty clienteRepositoty;
+	private ClienteRepository clienteRepositoty;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
