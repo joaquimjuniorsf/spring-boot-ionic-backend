@@ -3,9 +3,9 @@ package com.joaquim.cursomc.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.joaquim.cursomc.domain.Endereco;
+import com.joaquim.cursomc.domain.Produto;
 
 @Repository
-public interface EnderecoRepositoty extends JpaRepository<Endereco, Integer>{
+public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
 
 }
