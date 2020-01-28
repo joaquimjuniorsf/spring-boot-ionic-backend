@@ -1,5 +1,6 @@
 package com.joaquim.cursomc;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -17,6 +18,7 @@ import com.joaquim.cursomc.domain.Pagamento;
 import com.joaquim.cursomc.domain.PagamentoComBoleto;
 import com.joaquim.cursomc.domain.PagamentoComCartao;
 import com.joaquim.cursomc.domain.Pedido;
+import com.joaquim.cursomc.domain.PedidoItem;
 import com.joaquim.cursomc.domain.Produto;
 import com.joaquim.cursomc.domain.enums.ClienteTipo;
 import com.joaquim.cursomc.domain.enums.PagamentoStatus;
@@ -26,6 +28,7 @@ import com.joaquim.cursomc.repositories.ClienteRepository;
 import com.joaquim.cursomc.repositories.EnderecoRepository;
 import com.joaquim.cursomc.repositories.EstadoRepository;
 import com.joaquim.cursomc.repositories.PagamentoRepository;
+import com.joaquim.cursomc.repositories.PedidoItemRepository;
 import com.joaquim.cursomc.repositories.PedidoRepository;
 import com.joaquim.cursomc.repositories.ProdutoRepository;
 
@@ -55,6 +58,9 @@ public class CursomcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private PedidoItemRepository pedidoItemRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -120,6 +126,20 @@ public class CursomcApplication implements CommandLineRunner{
 		pedidoRepository.saveAll(Arrays.asList(ped1,ped2));
 		
 		pagamentoRepository.saveAll(Arrays.asList(pagto1,pagto2));
+		
+		
+		PedidoItem pi1 = new PedidoItem(ped1, p1, new BigDecimal(0.00), 1, new BigDecimal(2000.00));
+		PedidoItem pi2 = new PedidoItem(ped1, p3, new BigDecimal(0.00), 2, new BigDecimal(80.00));
+		PedidoItem pi3 = new PedidoItem(ped1, p3, new BigDecimal(0.00), 2, new BigDecimal(80.00));
+		
+		ped1.getItens().addAll(Arrays.asList(pi1,pi2));
+		ped2.getItens().addAll(Arrays.asList(pi3));
+		
+		p1.getItens().addAll(Arrays.asList(pi1));
+		p2.getItens().addAll(Arrays.asList(pi3));
+		p3.getItens().addAll(Arrays.asList(pi1));
+		
+		pedidoItemRepository.saveAll(Arrays.asList(pi1,pi2,pi3));
 	}
 
 }
