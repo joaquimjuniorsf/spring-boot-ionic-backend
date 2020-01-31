@@ -11,7 +11,7 @@ import com.joaquim.cursomc.domain.Pedido;
 import com.joaquim.cursomc.service.PedidoService;
 
 @RestController
-@RequestMapping(value="/Pedidos")
+@RequestMapping(value="/pedidos")
 public class PedidoResource {
 	
 	@Autowired

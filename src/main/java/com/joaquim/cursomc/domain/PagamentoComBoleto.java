@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.joaquim.cursomc.domain.enums.PagamentoStatus;
 
 @Entity
@@ -11,7 +12,9 @@ public class PagamentoComBoleto extends Pagamento {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataPagamento;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataVencimeto;
 	
 	public PagamentoComBoleto() {
