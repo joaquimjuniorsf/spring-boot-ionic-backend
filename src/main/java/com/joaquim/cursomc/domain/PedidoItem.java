@@ -6,12 +6,15 @@ import java.math.BigDecimal;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class PedidoItem implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	@EmbeddedId
 	PedidoItemPk id = new PedidoItemPk();
 	
@@ -31,10 +34,12 @@ public class PedidoItem implements Serializable{
 		this.preco = preco;
 	}
 	
+	@JsonIgnore
 	public Pedido getPedido() {
 		return this.id.getPedido();
 	}
 	
+	@JsonIgnore	
 	public Produto getProduto() {
 		return this.id.getProduto();
 	}

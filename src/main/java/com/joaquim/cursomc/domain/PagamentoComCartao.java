@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import com.joaquim.cursomc.domain.enums.PagamentoStatus;
 
 @Entity
-public class PagamentoComCartao extends Pagamento{
+public class PagamentoComCartao extends Pagamento {
 	
 	private static final long serialVersionUID = 1L;
 	
