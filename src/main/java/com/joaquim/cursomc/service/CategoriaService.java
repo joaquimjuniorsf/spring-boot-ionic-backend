@@ -1,5 +1,6 @@
 package com.joaquim.cursomc.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.joaquim.cursomc.domain.Categoria;
+import com.joaquim.cursomc.dto.CategoriaDTO;
 import com.joaquim.cursomc.repositories.CategoriaRepository;
 import com.joaquim.cursomc.service.exceptions.DataIntegrityException;
 import com.joaquim.cursomc.service.exceptions.ObjectNotFoundException;
@@ -43,6 +45,10 @@ public class CategoriaService {
 		}catch(DataIntegrityViolationException ex) {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
 		}
+	}
+	
+	public List<Categoria> findAll(){
+		return categoriaRepository.findAll();
 	}
 
 }
