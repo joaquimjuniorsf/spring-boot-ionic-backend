@@ -2,6 +2,7 @@ package com.joaquim.cursomc.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -135,5 +136,25 @@ public class Pedido implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+		
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pedido número: ");
+		builder.append(getId());
+		builder.append(", Instante: ");
+		builder.append(df.format(getInstante()));
+		builder.append(", Cliente: ");
+		builder.append(getCliente().getNome());
+		builder.append(", Situação do Pagamento: ");
+		builder.append(getPagamento().getPagametoStatus().getDescricao());
+		
+		
+		return builder.toString();
+	}
+	
+	
 
 }
