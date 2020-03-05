@@ -1,6 +1,7 @@
 package com.joaquim.cursomc.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -52,6 +53,14 @@ public class Pedido implements Serializable{
 		this.instante = instante;
 		this.cliente = cliente;
 		this.enderecoEntrega = enderecoEntrega;
+	}
+	
+	public BigDecimal getValorTotal() {
+		BigDecimal sum = itens.stream()
+				  .map(x -> x.getSubTotal())
+				  .reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		return sum;
 	}
 
 	public Integer getId() {
