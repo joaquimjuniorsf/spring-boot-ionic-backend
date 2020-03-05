@@ -1,6 +1,7 @@
 package com.joaquim.cursomc.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Produto implements Serializable{
 	
 	private String nome;
 	
-	private Double preco;
+	private BigDecimal preco;
 	
 	@JsonIgnore
 	@ManyToMany
@@ -45,7 +46,7 @@ public class Produto implements Serializable{
 	public Produto() {
 	}
 
-	public Produto(Integer id, String nome, Double preco) {
+	public Produto(Integer id, String nome, BigDecimal preco) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -73,11 +74,11 @@ public class Produto implements Serializable{
 		this.nome = nome;
 	}
 
-	public Double getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(Double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 

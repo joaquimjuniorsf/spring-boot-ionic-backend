@@ -1,6 +1,7 @@
 package com.joaquim.cursomc.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.joaquim.cursomc.domain.Produto;
 
@@ -10,7 +11,7 @@ public class ProdutoDTO implements Serializable {
 	
 	private Integer id;
 	private String nome;
-	private Double preco;
+	private BigDecimal preco;
 	
 	public ProdutoDTO() {
 	}
@@ -33,10 +34,10 @@ public class ProdutoDTO implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Double getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
-	public void setPreco(Double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 	

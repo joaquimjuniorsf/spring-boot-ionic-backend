@@ -43,8 +43,16 @@ public class PedidoItem implements Serializable{
 		return this.id.getPedido();
 	}
 	
+	public void setPedido(Pedido p) {
+		id.setPedido(p);
+	}
+	
 	public Produto getProduto() {
 		return this.id.getProduto();
+	}
+	
+	public void setProduto(Produto p) {
+		id.setProduto(p);
 	}
 
 	public PedidoItemPk getId() {
