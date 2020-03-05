@@ -34,6 +34,9 @@ public class PedidoService {
 	@Autowired
 	private PedidoItemRepository pedidoItemRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public Pedido buscar(Integer id) {
 		Optional<Pedido> obj = 	pedidoRepository.findById(id);
 		
@@ -61,6 +64,8 @@ public class PedidoService {
 		});
 		
 		pedidoItemRepository.saveAll(p.getItens());
+		
+		emailService.sendOrderConfirmationEmail(p);
 		
 		return p;
 	}

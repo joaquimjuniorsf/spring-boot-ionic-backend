@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.joaquim.cursomc.service.DBService;
+import com.joaquim.cursomc.service.EmailService;
+import com.joaquim.cursomc.service.MockEmailService;
 
 @Configuration
 @Profile("test")
@@ -19,5 +21,10 @@ public class TesteConfig {
 		dbservice.instantiateDateBase();
 		
 		return true;
+	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new MockEmailService();
 	}
 }
