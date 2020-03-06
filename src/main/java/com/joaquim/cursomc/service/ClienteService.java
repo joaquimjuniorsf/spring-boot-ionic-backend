@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.joaquim.cursomc.domain.Cidade;
@@ -25,6 +26,9 @@ import com.joaquim.cursomc.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	@Autowired
 	private ClienteRepository repo;
@@ -79,11 +83,11 @@ public class ClienteService {
 	}
 	
 	public Cliente fromDTO(ClienteDTO obj) {
-		return new Cliente(obj.getId(),obj.getNome(),obj.getEmail(),null,null);
+		return new Cliente(obj.getId(),obj.getNome(),obj.getEmail(),null,null,null);
 	}
 	
 	public Cliente fromDTO(ClienteNewDTO obj) {
-		Cliente cli = new Cliente(null,obj.getNome(),obj.getEmail(),obj.getCpfcnpj(),ClienteTipo.toEnum(obj.getClienteTipo()));
+		Cliente cli = new Cliente(null,obj.getNome(),obj.getEmail(),obj.getCpfcnpj(),ClienteTipo.toEnum(obj.getClienteTipo()),pe.encode(obj.getSenha()));
 		
 		Cidade cid = cidadeRepository.findById(obj.getCidadeId()).orElse(null);
 		
