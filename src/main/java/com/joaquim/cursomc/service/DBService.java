@@ -21,6 +21,7 @@ import com.joaquim.cursomc.domain.PedidoItem;
 import com.joaquim.cursomc.domain.Produto;
 import com.joaquim.cursomc.domain.enums.ClienteTipo;
 import com.joaquim.cursomc.domain.enums.PagamentoStatus;
+import com.joaquim.cursomc.domain.enums.Perfil;
 import com.joaquim.cursomc.repositories.CategoriaRepository;
 import com.joaquim.cursomc.repositories.CidadeRepository;
 import com.joaquim.cursomc.repositories.ClienteRepository;
@@ -101,14 +102,20 @@ public class DBService {
 
 		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "12345678901", ClienteTipo.PESSOA_FISICA,pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("(38) 1234-5679", "(11) 12345678"));
+		
+		Cliente cli2 = new Cliente(null, "João das Couve", "joao@gmail.com", "55026681000", ClienteTipo.PESSOA_FISICA,pe.encode("123"));
+		cli2.getTelefones().addAll(Arrays.asList("(38) 1234-5679", "(11) 12345678"));
+		cli2.addPerfil(Perfil.ADMIN);
 
 		Endereco end1 = new Endereco(null, "Rua das Flores", "24", "Apto 76", "Centro", "05541-000", cli1, c1);
 		Endereco end2 = new Endereco(null, "Rua das Pedras", "69", "Apto 171", "Centro", "05541-000", cli1, c2);
+		Endereco end3 = new Endereco(null, "Av. Floriano", "69", "Apto 171", "Centro", "05541-000", cli2, c2);
 
 		cli1.getEnderecos().addAll(Arrays.asList(end1, end2));
+		cli2.getEnderecos().addAll(Arrays.asList(end3));
 
-		clienteRepositoty.saveAll(Arrays.asList(cli1));
-		enderecoRepositoty.saveAll(Arrays.asList(end1, end2));
+		clienteRepositoty.saveAll(Arrays.asList(cli1,cli2));
+		enderecoRepositoty.saveAll(Arrays.asList(end1, end2,end3));
 
 		Pedido ped1 = new Pedido(null, LocalDate.now(), cli1, end1);
 		Pedido ped2 = new Pedido(null, LocalDate.now(), cli1, end2);
